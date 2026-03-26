@@ -195,6 +195,207 @@ header {
   text-align: center;
 }
 
+/* Auth Page */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-container {
+  background: rgba(26,26,46,0.95);
+  padding: 60px 40px;
+  border-radius: 25px;
+  text-align: center;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  backdrop-filter: blur(20px);
+}
+
+.auth-icon {
+  width: 100px;
+  margin-bottom: 30px;
+}
+
+.auth-page h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.auth-page p {
+  color: #ccc;
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+
+.auth-form input {
+  margin-bottom: 20px;
+}
+
+.auth-link {
+  margin-top: 30px;
+  color: #aaa;
+}
+
+.auth-link a {
+  color: #6c63ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
+.risk-small {
+  margin-top: 40px;
+  font-size: 12px;
+  color: #888;
+  padding-top: 30px;
+  border-top: 1px solid #444;
+}
+
+/* About Page */
+.about-hero {
+  background: linear-gradient(135deg, #0b0b2e, #1a0f4a);
+  padding: 100px 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.about-hero p {
+  font-size: 20px;
+  color: #ccc;
+}
+
+.about-content {
+  padding: 80px 0;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 60px;
+  align-items: start;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #ddd;
+  margin-bottom: 30px;
+}
+
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.stat {
+  background: rgba(108,99,255,0.1);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid rgba(108,99,255,0.3);
+}
+
+.stat h3 {
+  font-size: 36px;
+  color: #6c63ff;
+  margin-bottom: 10px;
+}
+
+.stat p {
+  color: #aaa;
+  font-size: 16px;
+}
+
+.license-section {
+  background: rgba(26,26,46,0.6);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.license-section h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.license-text {
+  font-size: 18px;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.about-footer {
+  background: rgba(0,0,0,0.8);
+  padding: 40px 0 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: background 0.3s;
+}
+
+.header-nav a:hover {
+  background: rgba(108,99,255,0.2);
+}
+
+.back-btn {
+  color: #6c63ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
 /* Auth Modal */
 .modal-overlay {
   position: fixed;
