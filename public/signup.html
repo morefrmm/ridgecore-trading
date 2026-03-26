@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account - Ridgecore Limited</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="logo">Ridgecore Limited</div>
+  <a href="index.html" class="back-btn">← Back</a>
+</header>
+
+<section class="auth-page">
+  <div class="auth-container">
+    <img src="https://cdn-icons-png.flaticon.com/512/2936/2936886.png" alt="Trading" class="auth-icon">
+    
+    <h1>Create Trading Account</h1>
+    <p>Join thousands conquering the markets</p>
+    
+    <form id="signupForm" class="auth-form">
+      <input type="email" id="email" placeholder="Email address" required>
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+      
+      <button type="submit" class="btn full">Create Account</button>
+    </form>
+    
+    <div id="signupMessage" class="message"></div>
+    
+    <p class="auth-link">
+      Already have account? <a href="login.html">Login here</a>
+    </p>
+    
+    <div class="risk-small">
+      Risk Warning: Trading involves risk.
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById('signupForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  const messageEl = document.getElementById('signupMessage');
+  
+  if (password !== confirmPassword) {
+    messageEl.textContent = 'Passwords do not match';
+    messageEl.className = 'message error';
+    return;
+  }
+  
+  messageEl.textContent = 'Creating account...';
+  messageEl.className = 'message info';
+  
+  try {
+    const response = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, email, password })
+    });
+    const data = await response.json();
+    
+    if (response.ok) {
+      messageEl.textContent = data.message;
+      messageEl.className = 'message success';
+      setTimeout(() => window.location.href = 'login.html', 1500);
+    } else {
+      messageEl.textContent = data.error;
+      messageEl.className = 'message error';
+    }
+  } catch (error) {
+    messageEl.textContent = 'Network error. Try again.';
+    messageEl.className = 'message error';
+  }
+});
+</script>
+</body>
+</html>

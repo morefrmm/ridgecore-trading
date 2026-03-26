@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Ridgecore Limited</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="logo">Ridgecore Limited</div>
+  <a href="index.html" class="back-btn">← Back</a>
+</header>
+
+<section class="auth-page">
+  <div class="auth-container">
+    <img src="https://cdn-icons-png.flaticon.com/512/2936/2936886.png" alt="Trading" class="auth-icon">
+    
+    <h1>Login to Trading Platform</h1>
+    <p>Access your account</p>
+    
+    <form id="loginForm" class="auth-form">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      
+      <button type="submit" class="btn full">Login</button>
+    </form>
+    
+    <div id="loginMessage" class="message"></div>
+    
+    <p class="auth-link">
+      No account? <a href="signup.html">Create one</a>
+    </p>
+    
+    <div class="risk-small">
+      Risk Warning: Trading involves risk.
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  const messageEl = document.getElementById('loginMessage');
+  
+  messageEl.textContent = 'Logging in...';
+  messageEl.className = 'message info';
+  
+  try {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+    const data = await response.json();
+    
+    if (response.ok) {
+      localStorage.setItem('token', data.token);
+      window.location.href = 'dashboard.html';  // or dashboard section
+    } else {
+      messageEl.textContent = data.error;
+      messageEl.className = 'message error';
+    }
+  } catch (error) {
+    messageEl.textContent = 'Network error. Try again.';
+    messageEl.className = 'message error';
+  }
+});
+</script>
+</body>
+</html>
